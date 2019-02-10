@@ -42,7 +42,7 @@ public class Ferry extends PublicTransportation {
 
     @Override
     public String toString(){
-        return "This Ferry has " + getNoOfStops() + " stops, and costs "+getTicketPrice()+'.' +
+        return "This Ferry has " + getNoOfStops() + " stops, and costs $"+getTicketPrice()+'.' +
                 " Build year is " + getBuildYear() +" and the ship name is "+ getShipName();
     }
 

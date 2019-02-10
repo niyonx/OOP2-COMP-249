@@ -3,13 +3,14 @@ package package4;
 import package1.PublicTransportation;
 
 public class Aircraft extends PublicTransportation {
-    Class thisClass;
-    maintenance thisMaintenance;
-    private enum Class{
+    private Class thisClass;
+    private maintenance thisMaintenance;
+
+    public enum Class{
         Helicopter, Airline, Glider, Balloon
     }
 
-    private enum maintenance{
+    public enum maintenance{
         Weekly, Monthly, Yearly
     }
 
@@ -49,19 +50,19 @@ public class Aircraft extends PublicTransportation {
 
     @Override
     public String toString(){
-        return "This "+getThisClass()+" is an Aircraft and has " + getNoOfStops() + " stops, and costs "+getTicketPrice()+'.' +
-                " It goes into maintenance on a "+getThisMaintenance()+" basis";
+        return "This "+getThisClass()+" is an Aircraft and has " + getNoOfStops() + " stops, and costs $"+getTicketPrice()+'.' +
+                " It goes into maintenance on a "+getThisMaintenance()+" basis.";
     }
 
     @Override
     public boolean equals(Object obj){
         if (this == obj) return true; // if two objects points to the same reference
-        if (obj == null || this.getClass()==obj.getClass()) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
+        if (obj == null || !(this.getClass()==obj.getClass())) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
         Aircraft aircraft = (Aircraft) obj;
         return this.getTicketPrice() == aircraft.getTicketPrice() &&
                 this.getNoOfStops() == aircraft.getNoOfStops() &&
-                this.getThisMaintenance() == aircraft.getThisMaintenance() &&
-                this.getThisClass().equals(aircraft.getThisClass());
+                this.getThisMaintenance() == getThisMaintenance() &&
+                this.getThisClass() == aircraft.getThisClass();
     }
 
 }

@@ -5,40 +5,40 @@ import package1.PublicTransportation;
 import java.util.Objects;
 
 public class CityBus extends PublicTransportation {
-    private long routeNo;
-    private int beginOperationYear;
-    private String lineName;
-    private String driverName;
+    protected long routeNo;
+    protected int beginOperationYear;
+    protected String lineName;
+    protected String driverName;
 
-    public long getRouteNo() {
+    protected long getRouteNo() {
         return routeNo;
     }
 
-    public void setRouteNo(long routeNo) {
+    protected void setRouteNo(long routeNo) {
         this.routeNo = routeNo;
     }
 
-    public int getBeginOperationYear() {
+    protected int getBeginOperationYear() {
         return beginOperationYear;
     }
 
-    public void setBeginOperationYear(int beginOperationYear) {
+    protected void setBeginOperationYear(int beginOperationYear) {
         this.beginOperationYear = beginOperationYear;
     }
 
-    public String getLineName() {
+    protected String getLineName() {
         return lineName;
     }
 
-    public void setLineName(String lineName) {
+    protected void setLineName(String lineName) {
         this.lineName = lineName;
     }
 
-    public String getDriverName() {
+    protected String getDriverName() {
         return driverName;
     }
 
-    public void setDriverName(String driverName) {
+    protected void setDriverName(String driverName) {
         this.driverName = driverName;
     }
 

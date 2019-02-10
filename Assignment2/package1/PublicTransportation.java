@@ -37,7 +37,7 @@ public class PublicTransportation {
 
     @Override
     public String toString(){
-        return "This Public Transportation has " + getNoOfStops() + " stops, and costs "+getTicketPrice()+'.';
+        return "This Public Transportation has " + getNoOfStops() + " stops, and costs $"+getTicketPrice()+'.';
     }
 
 

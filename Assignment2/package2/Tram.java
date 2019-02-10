@@ -29,7 +29,7 @@ public class Tram extends CityBus {
     @Override
     public String toString() {
         return "This Tram has "+ getNoOfStops()+
-                " stops and costs "+ getTicketPrice()+
+                " stops and costs $"+ getTicketPrice()+
                 ". Its route number is "+getNoOfStops()+
                 " and line name is " + getLineName()+
                 ". The begin operation year is "+getBeginOperationYear()+
