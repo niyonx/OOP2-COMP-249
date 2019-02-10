@@ -2,6 +2,8 @@ package package2;
 
 import package1.PublicTransportation;
 
+import java.util.Objects;
+
 public class CityBus extends PublicTransportation {
     private long routeNo;
     private int beginOperationYear;
@@ -63,4 +65,28 @@ public class CityBus extends PublicTransportation {
         this.lineName = cb.getLineName();
         this.driverName = cb.getDriverName();
     }
+
+    @Override
+    public String toString() {
+        return "This City Bus has "+ getNoOfStops()+
+                " stops and costs "+ getTicketPrice()+
+                ". Its route number is "+getNoOfStops()+
+                " and line name is " + getLineName()+
+                ". The begin operation year is "+getBeginOperationYear()+
+                " and driver's name is " + getDriverName()+".";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // if two objects points to the same reference
+        if (o == null || !(this.getClass() == o.getClass())) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
+        CityBus cityBus = (CityBus) o;
+        return getRouteNo() == cityBus.getRouteNo() &&
+                getBeginOperationYear() == cityBus.getBeginOperationYear() &&
+                getLineName().equals(cityBus.getLineName()) &&
+                getDriverName().equals(cityBus.getDriverName()) &&
+                getNoOfStops() == cityBus.getNoOfStops() &&
+                getTicketPrice() == cityBus.getTicketPrice();
+    }
+
 }

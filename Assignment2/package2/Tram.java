@@ -26,5 +26,27 @@ public class Tram extends CityBus {
         this.maxSpeed = t.getMaxSpeed();
     }
 
+    @Override
+    public String toString() {
+        return "This Tram has "+ getNoOfStops()+
+                " stops and costs "+ getTicketPrice()+
+                ". Its route number is "+getNoOfStops()+
+                " and line name is " + getLineName()+
+                ". The begin operation year is "+getBeginOperationYear()+
+                " and driver's name is " + getDriverName()+". The max speed is "+getMaxSpeed()+".";
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // if two objects points to the same reference
+        if (o == null || !(this.getClass() == o.getClass())) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
+        Tram tram = (Tram) o;
+        return getRouteNo() == tram.getRouteNo() &&
+                getBeginOperationYear() == tram.getBeginOperationYear() &&
+                getLineName().equals(tram.getLineName()) &&
+                getDriverName().equals(tram.getDriverName()) &&
+                getNoOfStops() == tram.getNoOfStops() &&
+                getTicketPrice() == tram.getTicketPrice() &&
+                getMaxSpeed() == tram.getMaxSpeed();
+    }
 }

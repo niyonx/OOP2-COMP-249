@@ -39,4 +39,21 @@ public class Ferry extends PublicTransportation {
         this.buildYear = f.getBuildYear();
         this.shipName = f.getShipName();
     }
+
+    @Override
+    public String toString(){
+        return "This Ferry has " + getNoOfStops() + " stops, and costs "+getTicketPrice()+'.' +
+                " Build year is " + getBuildYear() +" and the ship name is "+ getShipName();
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true; // if two objects points to the same reference
+        if (obj == null || this.getClass()==obj.getClass()) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
+        Ferry ferry = (Ferry) obj;
+        return this.getTicketPrice() == ferry.getTicketPrice() &&
+                this.getNoOfStops() == ferry.getNoOfStops() &&
+                this.getBuildYear() == ferry.getBuildYear() &&
+                this.getShipName().equals(ferry.getShipName());
+    }
 }
