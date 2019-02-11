@@ -1,4 +1,4 @@
-package package2;
+package part1.package2;
 
 public class Metro extends CityBus {
     private int noOfVehicles;
@@ -33,21 +33,21 @@ public class Metro extends CityBus {
     }
 
     public Metro(Metro m){
-        super(m.getTicketPrice(), m.getNoOfStops(), m.getRouteNo(),m.getBeginOperationYear(), m.getLineName(), m.getDriverName());
-        this.noOfVehicles = m.getNoOfVehicles();
-        this.cityName = m.getCityName();
+        super(m.ticketPrice, m.noOfStops, m.routeNo,m.beginOperationYear, m.lineName, m.driverName);
+        this.noOfVehicles = m.noOfVehicles;
+        this.cityName = m.cityName;
     }
 
     @Override
     public String toString() {
-        return "This Metro has "+ getNoOfStops()+
-                " stops and costs $"+ getTicketPrice()+
-                ". Its route number is "+getNoOfStops()+
-                " and line name is " + getLineName()+
-                ". The begin operation year is "+getBeginOperationYear()+
-                " and driver's name is " + getDriverName()+"." +
-                " Number of vehicles is " + getNoOfVehicles() +
-                " and city name is " + getCityName()+'.';
+        return "This Metro has "+ noOfStops +
+                " stops and costs $"+ ticketPrice +
+                ". Its route number is "+ noOfStops +
+                " and line name is " + lineName +
+                ". The begin operation year is "+ beginOperationYear +
+                " and driver's name is " + driverName +"." +
+                " Number of vehicles is " + noOfVehicles +
+                " and city name is " + cityName +'.';
     }
 
     @Override

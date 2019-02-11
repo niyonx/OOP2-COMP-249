@@ -1,6 +1,6 @@
-package package4;
+package part1.package4;
 
-import package1.PublicTransportation;
+import part1.package1.PublicTransportation;
 
 public class Aircraft extends PublicTransportation {
     private Class thisClass;
@@ -43,15 +43,15 @@ public class Aircraft extends PublicTransportation {
     }
 
     public Aircraft(Aircraft a) {
-        super(a.getTicketPrice(), a.getNoOfStops());
-        thisClass = a.getThisClass();
-        thisMaintenance = a.getThisMaintenance();
+        super(a.ticketPrice, a.noOfStops);
+        thisClass = a.thisClass;
+        thisMaintenance = a.thisMaintenance;
     }
 
     @Override
     public String toString(){
-        return "This "+getThisClass()+" is an Aircraft and has " + getNoOfStops() + " stops, and costs $"+getTicketPrice()+'.' +
-                " It goes into maintenance on a "+getThisMaintenance()+" basis.";
+        return "This "+thisClass+" is an Aircraft and has " + noOfStops + " stops, and costs $"+ticketPrice+'.' +
+                " It goes into maintenance on a "+thisMaintenance+" basis.";
     }
 
     @Override
@@ -59,10 +59,10 @@ public class Aircraft extends PublicTransportation {
         if (this == obj) return true; // if two objects points to the same reference
         if (obj == null || !(this.getClass()==obj.getClass())) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
         Aircraft aircraft = (Aircraft) obj;
-        return this.getTicketPrice() == aircraft.getTicketPrice() &&
-                this.getNoOfStops() == aircraft.getNoOfStops() &&
-                this.getThisMaintenance() == getThisMaintenance() &&
-                this.getThisClass() == aircraft.getThisClass();
+        return this.ticketPrice == aircraft.ticketPrice &&
+                this.noOfStops == aircraft.noOfStops &&
+                this.thisMaintenance == aircraft.thisMaintenance &&
+                this.thisClass == aircraft.thisClass;
     }
 
 }

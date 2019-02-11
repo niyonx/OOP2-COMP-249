@@ -1,8 +1,8 @@
-package package1;
+package part1.package1;
 
 public class PublicTransportation {
-    private double ticketPrice;
-    private int noOfStops;
+    protected double ticketPrice;
+    protected int noOfStops;
 
     public PublicTransportation(){
         ticketPrice = 0;
@@ -40,7 +40,6 @@ public class PublicTransportation {
         return "This Public Transportation has " + getNoOfStops() + " stops, and costs $"+getTicketPrice()+'.';
     }
 
-
     @Override
     public boolean equals(Object obj){
         if (this == obj) return true; // if two objects points to the same reference
@@ -49,7 +48,4 @@ public class PublicTransportation {
         return this.getTicketPrice() == publicTransportation.getTicketPrice() &&
                 this.getNoOfStops() == publicTransportation.getNoOfStops();
     }
-
-
-
 }

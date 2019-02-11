@@ -1,11 +1,11 @@
-package Driver;
+package part1.Driver;
 
-import package1.PublicTransportation;
-import package2.CityBus;
-import package2.Metro;
-import package2.Tram;
-import package3.Ferry;
-import package4.Aircraft;
+import part1.package1.PublicTransportation;
+import part1.package2.CityBus;
+import part1.package2.Metro;
+import part1.package2.Tram;
+import part1.package3.Ferry;
+import part1.package4.Aircraft;
 
 public class Driver {
     public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class Driver {
         System.out.println(cb2);
         System.out.println();
 
-        Metro m1 = new Metro();
+        Metro m1 = new Metro(3.25, 3,513,2005,"Longueuil","Sam",22,"Longueuil");
         System.out.println(m1);
         Metro m2 = new Metro(5.25, 4,215,2004,"Angrignon","Jacob",53,"Montreal");
         System.out.println(m2);
@@ -46,7 +46,7 @@ public class Driver {
         System.out.println(a1);
         Aircraft a2 = new Aircraft(a1);
         System.out.println(a2);
-        Aircraft a3 = new Aircraft();
+        Aircraft a3 = new Aircraft(43,11, Aircraft.Class.Airline, Aircraft.maintenance.Yearly);
         System.out.println(a3);
         Aircraft a4 = new Aircraft(100,3, Aircraft.Class.Balloon, Aircraft.maintenance.Monthly);
         System.out.println(a4);
