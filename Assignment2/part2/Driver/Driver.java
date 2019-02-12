@@ -7,6 +7,7 @@ import part1.package2.Tram;
 import part1.package3.Ferry;
 import part1.package4.Aircraft;
 
+@SuppressWarnings("ALL")
 public class Driver {
     public static void main(String[] args) {
         double maxPrice=0, minPrice=999;
@@ -91,6 +92,5 @@ public class Driver {
 
         System.out.println("At index location " + indexMaxPrice+ ": " + arrayPublicTransportation[indexMaxPrice]);
         System.out.println("At index location " + indexMinPrice+ ": " + arrayPublicTransportation[indexMinPrice]);
-
     }
 }

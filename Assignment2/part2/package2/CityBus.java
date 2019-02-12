@@ -3,10 +3,10 @@ package part2.package2;
 import part2.package1.PublicTransportation;
 
 public class CityBus extends PublicTransportation {
-    protected long routeNo;
-    protected int beginOperationYear;
-    protected String lineName;
-    protected String driverName;
+    private long routeNo;
+    private int beginOperationYear;
+    private String lineName;
+    private String driverName;
 
     public long getRouteNo() {
         return routeNo;
@@ -57,7 +57,7 @@ public class CityBus extends PublicTransportation {
     }
 
     public CityBus(CityBus cb){
-        super(cb.ticketPrice, cb.noOfStops);
+        super(cb.getTicketPrice(), cb.getNoOfStops());
         this.routeNo = cb.routeNo;
         this.beginOperationYear = cb.beginOperationYear;
         this.lineName = cb.lineName;
@@ -66,9 +66,9 @@ public class CityBus extends PublicTransportation {
 
     @Override
     public String toString() {
-        return "This City Bus has "+ noOfStops +
-                " stops and costs "+ ticketPrice +
-                ". Its route number is "+ noOfStops +
+        return "This City Bus has "+ getNoOfStops() +
+                " stops and costs "+ getTicketPrice() +
+                ". Its route number is "+ routeNo +
                 " and line name is " + lineName +
                 ". The begin operation year is "+ beginOperationYear +
                 " and driver's name is " + driverName +".";
@@ -83,8 +83,7 @@ public class CityBus extends PublicTransportation {
                 beginOperationYear == cityBus.beginOperationYear &&
                 lineName.equals(cityBus.lineName) &&
                 driverName.equals(cityBus.driverName) &&
-                noOfStops == cityBus.noOfStops &&
-                ticketPrice == cityBus.ticketPrice;
+                this.getNoOfStops() == cityBus.getNoOfStops() &&
+                this.getTicketPrice() == cityBus.getTicketPrice();
     }
-
 }

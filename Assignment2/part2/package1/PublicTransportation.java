@@ -1,8 +1,8 @@
 package part2.package1;
 
 public class PublicTransportation {
-    protected double ticketPrice;
-    protected int noOfStops;
+    private double ticketPrice;
+    private int noOfStops;
 
     public PublicTransportation(){
         ticketPrice = 0;

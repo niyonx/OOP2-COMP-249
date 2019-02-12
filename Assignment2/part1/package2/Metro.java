@@ -55,13 +55,13 @@ public class Metro extends CityBus {
         if (this == o) return true; // if two objects points to the same reference
         if (o == null || !(this.getClass() == o.getClass())) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
         Metro metro = (Metro) o;
-        return this.routeNo == metro.getRouteNo() &&
-                this.beginOperationYear == metro.getBeginOperationYear() &&
-                this.lineName.equals(metro.getLineName()) &&
-                this.driverName.equals(metro.getDriverName()) &&
-                getNoOfStops() == metro.getNoOfStops() &&
-                getTicketPrice() == metro.getTicketPrice() &&
-                this.noOfVehicles == metro.getNoOfVehicles() &&
-                this.cityName.equals(metro.getCityName());
+        return this.routeNo == metro.routeNo &&
+                this.beginOperationYear == metro.beginOperationYear &&
+                this.lineName.equals(metro.lineName) &&
+                this.driverName.equals(metro.driverName) &&
+                this.noOfStops == metro.noOfStops &&
+                this.ticketPrice == metro.ticketPrice &&
+                this.noOfVehicles == metro.noOfVehicles &&
+                this.cityName.equals(metro.cityName);
     }
 }

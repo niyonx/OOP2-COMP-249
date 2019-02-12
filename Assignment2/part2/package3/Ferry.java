@@ -35,14 +35,14 @@ public class Ferry extends PublicTransportation {
     }
 
     public Ferry(Ferry f){
-        super(f.ticketPrice, f.noOfStops);
+        super(f.getTicketPrice(), f.getNoOfStops());
         this.buildYear = f.buildYear;
         this.shipName = f.shipName;
     }
 
     @Override
     public String toString(){
-        return "This Ferry has " + noOfStops + " stops, and costs $"+ ticketPrice +'.' +
+        return "This Ferry has " + getNoOfStops() + " stops, and costs $"+ getTicketPrice() +'.' +
                 " Build year is " + buildYear +" and the ship name is "+ shipName;
     }
 
@@ -51,8 +51,8 @@ public class Ferry extends PublicTransportation {
         if (this == obj) return true; // if two objects points to the same reference
         if (obj == null || this.getClass()==obj.getClass()) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
         Ferry ferry = (Ferry) obj;
-        return this.ticketPrice == ferry.ticketPrice &&
-                this.noOfStops == ferry.noOfStops &&
+        return this.getTicketPrice() == ferry.getTicketPrice() &&
+                this.getNoOfStops() == ferry.getNoOfStops() &&
                 this.buildYear == ferry.buildYear &&
                 this.shipName.equals(ferry.shipName);
     }

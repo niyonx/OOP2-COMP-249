@@ -43,14 +43,14 @@ public class Aircraft extends PublicTransportation {
     }
 
     public Aircraft(Aircraft a) {
-        super(a.ticketPrice, a.noOfStops);
+        super(a.getTicketPrice(), a.getNoOfStops());
         thisClass = a.thisClass;
         thisMaintenance = a.thisMaintenance;
     }
 
     @Override
     public String toString(){
-        return "This "+thisClass+" is an Aircraft and has " + noOfStops + " stops, and costs $"+ticketPrice+'.' +
+        return "This "+thisClass+" is an Aircraft and has " + getNoOfStops() + " stops, and costs $"+getTicketPrice()+'.' +
                 " It goes into maintenance on a "+thisMaintenance+" basis.";
     }
 
@@ -59,10 +59,9 @@ public class Aircraft extends PublicTransportation {
         if (this == obj) return true; // if two objects points to the same reference
         if (obj == null || !(this.getClass()==obj.getClass())) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
         Aircraft aircraft = (Aircraft) obj;
-        return this.ticketPrice == aircraft.ticketPrice &&
-                this.noOfStops == aircraft.noOfStops &&
+        return this.getTicketPrice() == aircraft.getTicketPrice() &&
+                this.getNoOfStops() == aircraft.getNoOfStops() &&
                 this.thisMaintenance == aircraft.thisMaintenance &&
                 this.thisClass == aircraft.thisClass;
     }
-
 }
