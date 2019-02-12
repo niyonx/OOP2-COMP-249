@@ -42,6 +42,7 @@ public class Driver {
         Ferry f1 = new Ferry(9,33,2000,"Titan");
         System.out.println(f1);
         Ferry f2 = new Ferry(11,29,2007,"Great white shark");
+        System.out.println(f2);
         System.out.println();
 
         Aircraft a1 = new Aircraft(22,32, Aircraft.Class.Helicopter, Aircraft.maintenance.Weekly);
