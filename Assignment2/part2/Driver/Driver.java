@@ -12,7 +12,7 @@ public class Driver {
     public static PublicTransportation[] copyCityBus(PublicTransportation[] arrayPublicTransport){
         PublicTransportation[] newArrayPublicTransport= new PublicTransportation[arrayPublicTransport.length];
         for (int i = 0; i < arrayPublicTransport.length; i++){
-         newArrayPublicTransport[i]= new PublicTransportation(arrayPublicTransport[i]);
+            newArrayPublicTransport[i]= new PublicTransportation(arrayPublicTransport[i]);
         }
         return newArrayPublicTransport;
     }
