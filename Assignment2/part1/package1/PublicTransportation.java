@@ -16,7 +16,7 @@ public class PublicTransportation {
     }
 
     /**
-     * This is a constructor to initialize a PublicTransportation object
+     * This is a constructor to initialize a PublicTransportation object with specific values
      * @param ticketPrice initial ticket price
      * @param noOfStops initial number of stops
      */
@@ -76,14 +76,15 @@ public class PublicTransportation {
     }
 
     /**
-     * equals method comparing two PublicTransportation attributes
+     * equals method comparing two objects
      * @param obj stores other object being compared
-     * @return boolean value of true of two objects are equal and false otherwise
+     * @return boolean value of true if two objects the same and false otherwise
      */
     @Override
     public boolean equals(Object obj){
         if (this == obj) return true; // if two objects points to the same reference
-        if (obj == null || this.getClass()==obj.getClass()) return false; // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
+        if (obj == null || this.getClass()==obj.getClass()) return false;
+        // null verification will make sure there's no null pointer exception while comparing the classes for the program not to crash
         PublicTransportation publicTransportation = (PublicTransportation)obj;
         return this.ticketPrice == publicTransportation.ticketPrice &&
                 this.noOfStops == publicTransportation.noOfStops;
