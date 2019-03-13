@@ -12,11 +12,24 @@ public class AuthorBibCreator {
         for (int i = 1; i <= 10; i++){
             try{
                 sc = new Scanner(new FileInputStream("Latex"+i+".bib"));
+
+//                while(sc.hasNextLine()){
+//                    s = sc.nextLine();
+//                    if (s.toLowerCase().contains(authorName.toLowerCase())) {
+//                        count++;
+//                    }
+//                    articles = new Article[100];
+//                }
+
+                articles = new Article[100];
+
 //                sc.useDelimiter("@ARTICLE");
+                int j = 0;
                 while(sc.hasNextLine()){
                     s = sc.nextLine();
                     if (s.toLowerCase().contains(authorName.toLowerCase())) {
-                        System.out.println(s);
+//                        System.out.println(s);
+                        count++;
                         author = s;
                         s = sc.nextLine();
                         journal = s;
@@ -37,16 +50,27 @@ public class AuthorBibCreator {
                         s = sc.nextLine();
                         month = s;
                         Article a = new Article(author, journal, title, volume, pages, doi, month, year, number);
-                        count++;
+                        articles[j] = a;
+                        j++;
                     }
-                    articles = new Article[count];
-
                 }
+
+                for (int k = 0; k < articles.length; k++) {
+                    if (articles[k]!=null) {
+                        pwIEEE.println(articles[k].toStringIEEE());
+                        pwACM.println(articles[k].toStringACM());
+                        pwNJ.println(articles[k].toStringNJ());
+                    }
+                }
+
             }catch(FileNotFoundException e){
                 System.out.println("Could not open input file Latex"+i+".bib for reading. Please check if file exists! Program will terminate after closing any opened files.");
                 System.exit(0);
             }
         }
+        pwIEEE.close();
+        pwACM.close();
+        pwNJ.close();
         return count;
     }
 
@@ -132,6 +156,6 @@ public class AuthorBibCreator {
             fNJ.delete();
         }
 
-        System.out.println("\nA total of "+processBibFiles(pwIEEE,pwACM,pwNJ,sc,authorName)+" records were found for author(s) with name: Park");
+        System.out.println("A total of "+processBibFiles(pwIEEE,pwACM,pwNJ,sc,authorName)+" records were found for author(s) with name: Park");
     }
 }

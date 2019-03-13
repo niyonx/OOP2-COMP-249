@@ -1,5 +1,6 @@
 public class Article {
     private String author, journal, title, volume, pages, doi, month, year, number;
+    private String authorIEEE, authorACM, authorNJ;
 
     public String getAuthor() {
         return author;
@@ -37,17 +38,76 @@ public class Article {
         return number;
     }
 
-    public Article(String author, String journal, String title, String volume, String pages, String doi, String month, String year, String number) {
-        this.author = author;
-        this.journal = journal;
-        this.title = title;
-        this.volume = volume;
-        this.pages = pages;
-        this.doi = doi;
-        this.month = month;
-        this.year = year;
-        this.number = number;
+    public Article(String myAuthor, String myJournal, String myTitle, String myVolume, String myPages, String myDoi, String myMonth, String myYear, String myNumber) {
+        this.author = myAuthor;
+        this.journal = myJournal;
+        this.title = myTitle;
+        this.volume = myVolume;
+        this.pages = myPages;
+        this.doi = myDoi;
+        this.month = myMonth;
+        this.year = myYear;
+        this.number = myNumber;
+
+        author = author.substring(author.indexOf("{")+1);
+        author = author.substring(0,author.indexOf("}"));
+
+        journal = journal.substring(journal.indexOf("{")+1);
+        journal = journal.substring(0,journal.indexOf("}"));
+
+        title = title.substring(title.indexOf("{")+1);
+        title = title.substring(0,title.indexOf("}"));
+
+        volume = volume.substring(volume.indexOf("{")+1);
+        volume = volume.substring(0,volume.indexOf("}"));
+
+        pages = pages.substring(pages.indexOf("{")+1);
+        pages = pages.substring(0,pages.indexOf("}"));
+
+        doi = doi.substring(doi.indexOf("{")+1);
+        doi = doi.substring(0,doi.indexOf("}"));
+
+        month = month.substring(month.indexOf("{")+1);
+        month = month.substring(0,month.indexOf("}"));
+
+        year = year.substring(year.indexOf("{")+1);
+        year = year.substring(0,year.indexOf("}"));
+
+        number = number.substring(number.indexOf("{")+1);
+        number = number.substring(0,number.indexOf("}"));
+
+        authorIEEE = author.replace("and", ",");
+        authorNJ = author.replace("and", "&");
+        authorACM = author.substring(0,author.indexOf("and"))+"et al.";
+//        System.out.println(authorIEEE);
+//        System.out.println(authorACM);
+//        System.out.println(authorNJ);
     }
 
+//    public String getAuthorIEEE(){
+//        return authorIEEE;
+//    }
+//
+//    public String getAuthorACM() {
+//        return authorACM;
+//    }
+//
+//    public String getAuthorNJ() {
+//        return authorNJ;
+//    }
 
+   public String toStringIEEE() {
+       // NAME, NAME, NAME, NAME. “TITLE”, JOURNAL, vol. VOLUME, no. NUMBER, p. PAGES, MONTH YEAR.
+        return authorIEEE+" \""+title+"\""+","+" "+journal+", "+volume+", no. "+number+", p. "+pages+", "+month+" "+year+".";
+    }
+
+    public String toStringACM() {
+        // NAME et al. YEAR. TITLE. JOURNAL. PP, NUMBER (YEAR), PAGES. DOI:https://doi.org/DOI.
+        return authorACM+" "+year+". "+title+". "+journal+". "+volume+", "+number+" ("+year+")"+", "+pages+". DOI:https://doi.org/"+doi;
+    }
+
+    public String toStringNJ() {
+        // NAME & NAME & NAME & NAME. TITLE. JOURNAL. PP, PAGES(YEAR).
+        return authorNJ+". "+title+". "+journal+". "+volume+", "+pages+"("+year+")";
+    }
 }
