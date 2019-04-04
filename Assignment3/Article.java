@@ -1,43 +1,102 @@
+/*
+ * Nigel Yong Sao Young, 40089856
+ * COMP249
+ * Assignment 3
+ * Due 21/03/19
+ *
+ */
+
+/**
+ * Class article storing data on article in which author is found
+ */
 public class Article {
     private String author, journal, title, volume, pages, doi, month, year, number;
     private String authorIEEE, authorACM, authorNJ;
 
+    /**
+     * get author's name
+     * @return author's name
+     */
     public String getAuthor() {
         return author;
     }
 
+    /**
+     * get journal name
+     * @return journal
+     */
     public String getJournal() {
         return journal;
     }
 
+    /**
+     * get title name
+     * @return title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * get volume
+     * @return volume
+     */
     public String getVolume() {
         return volume;
     }
 
+    /**
+     * get pages
+     * @return book pages
+     */
     public String getPages() {
         return pages;
     }
 
+    /**
+     * get DOI
+     * @return DOI
+     */
     public String getDoi() {
         return doi;
     }
 
+    /**
+     * get month
+     * @return month
+     */
     public String getMonth() {
         return month;
     }
 
+    /**
+     * get year
+     * @return year
+     */
     public String getYear() {
         return year;
     }
 
+    /**
+     * get number
+     * @return number
+     */
     public String getNumber() {
         return number;
     }
 
+    /**
+     * constructor of the Article class
+     * @param myAuthor stores author
+     * @param myJournal stores journal
+     * @param myTitle stores title
+     * @param myVolume stores volume
+     * @param myPages stores pages
+     * @param myDoi stores doi
+     * @param myMonth stores month
+     * @param myYear stores year
+     * @param myNumber stores number
+     */
     public Article(String myAuthor, String myJournal, String myTitle, String myVolume, String myPages, String myDoi, String myMonth, String myYear, String myNumber) {
         this.author = myAuthor;
         this.journal = myJournal;
@@ -51,71 +110,28 @@ public class Article {
 
         if (!author.equals("")) {
             author = author.substring(author.indexOf("author={") + 8);
-//            System.out.println(author);
-//            author = author.substring(0, author.indexOf("}"));
 
             journal = journal.substring(journal.indexOf("{") + 1);
-//            journal = journal.substring(0, journal.indexOf("}"));
 
             title = title.substring(title.indexOf("{") + 1);
-//            title = title.substring(0, title.indexOf("}"));
 
             volume = volume.substring(volume.indexOf("{") + 1);
-//            volume = volume.substring(0, volume.indexOf("}"));
 
             pages = pages.substring(pages.indexOf("{") + 1);
-//            pages = pages.substring(0, pages.indexOf("}"));
 
             doi = doi.substring(doi.indexOf("{") + 1);
-//            doi = doi.substring(0, doi.indexOf("}"));
 
             month = month.substring(month.indexOf("{") + 1);
-//            month = month.substring(0, month.indexOf("}"));
 
             year = year.substring(year.indexOf("{") + 1);
-//            year = year.substring(0, year.indexOf("}"));
 
             number = number.substring(number.indexOf("{") + 1);
-//            number = number.substring(0, number.indexOf("}"));
 
-            authorIEEE = author.replace("and", ",");
+            authorIEEE = author.replace(" and", ",");
             authorNJ = author.replace("and", "&");
             authorACM = author.substring(0, author.indexOf("and")) + "et al.";
         }
-//        System.out.println(authorIEEE);
-//
-//        author={T. Jackson and A. H. Peterson and N. Wang
-//                ,
-//                journal={IEEE Transactions on Computer Science
-//                        ,
-//                        title={Detecting Security Vulnerabilities in Binary Code
-//                                ,
-//                                year={2017
-//                                        ,
-//                                        volume={QQ
-//                                                ,
-//                                                number={85
-//                                                        ,
-//                                                        pages={1-12
-//                                                                ,
-//                                                                keywords={Security attacks;Binary code processing;Security error detection;Deep machine learning;Static analysis
-//                ,
-//                doi={14.2408/TCS.2017.4746889
-//        System.out.println(authorACM);
-//        System.out.println(authorNJ);
     }
-
-//    public String getAuthorIEEE(){
-//        return authorIEEE;
-//    }
-//
-//    public String getAuthorACM() {
-//        return authorACM;
-//    }
-//
-//    public String getAuthorNJ() {
-//        return authorNJ;
-//    }
 
    public String toStringIEEE() {
        // NAME, NAME, NAME, NAME. “TITLE”, JOURNAL, vol. VOLUME, no. NUMBER, p. PAGES, MONTH YEAR.
