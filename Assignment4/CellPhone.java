@@ -1,3 +1,10 @@
+/*
+ * Nigel Yong Sao Young, 40089856
+ * COMP249
+ * Assignment 4
+ * Due 21/03/19
+ */
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -67,7 +74,7 @@ public class CellPhone {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || o != this.getClass())
+        if (o == null || o.getClass() != this.getClass())
             return false;
         if (this == o)
             return true;

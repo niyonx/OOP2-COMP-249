@@ -1,3 +1,10 @@
+/*
+ * Nigel Yong Sao Young, 40089856
+ * COMP249
+ * Assignment 4
+ * Due 21/03/19
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.PrintWriter;

@@ -1,8 +1,24 @@
+/*
+ * Nigel Yong Sao Young, 40089856
+ * COMP249
+ * Assignment 4
+ * Due 21/03/19
+ */
+
 import java.util.NoSuchElementException;
 
 public class CellList {
     private CellNode head;
     private int size;
+    private int ctr=0;
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getCtr() {
+        return ctr;
+    }
 
     public CellList() {
         this.head = null;
@@ -10,8 +26,20 @@ public class CellList {
     }
 
     public CellList(CellList cellList){
-        this.head = cellList.head;
+        this.head = null;
         this.size = cellList.size;
+
+        CellNode othertemp = cellList.head;
+        head = new CellNode(othertemp.getCp(),head);
+        CellNode temp = head;
+
+        othertemp = othertemp.next;
+        while(othertemp!= null){
+            temp.next = new CellNode(new CellPhone(othertemp.getCp(), othertemp.getCp().getSerialNum()),null);
+            temp = temp.next;
+            othertemp = othertemp.next;
+        }
+        temp = othertemp = null;
     }
 
     class CellNode{
@@ -50,43 +78,33 @@ public class CellList {
         }
 
         @Override
-        protected Object clone() throws CloneNotSupportedException {
-            return new CellNode(this.cp, this.next);
+        protected Object clone() {
+            return new CellNode((CellPhone)cp.clone(), this.next);
         }
     }
 
     public void addToStart(CellPhone cp){
         if (find(cp.getSerialNum())==null) {
-            head = new CellNode(cp, head);
+            head = new CellNode(new CellPhone(cp,cp.getSerialNum()), head);
             size++;
         }
     }
-
-//    public int size(){
-//        int ctr = 0;
-//        CellNode temp=head;
-//        if (head == null)
-//            return 0;
-//        while (temp.next != null){
-//            temp = temp.next;
-//            ctr++;
-//        }
-//        return ctr;
-//    }
 
     public void insertAtIndex(CellPhone cp, int index){
         int ctr=0;
         CellNode temp = head;
         if (find(cp.getSerialNum())==null) {
-            if (index > this.size - 1)
+            if (index > this.size - 1 || index <0)
                 throw new NoSuchElementException();
-            if (index == 0)
-                this.addToStart((CellPhone) cp.clone());
+            if (index == 0) {
+                this.addToStart(new CellPhone(cp,cp.getSerialNum()));
+                return;
+            }
             while (temp.next != null && ctr + 1 != index) {
                 temp = temp.next;
                 ctr++;
             }
-            temp.next = new CellNode((CellPhone) cp.clone(), temp.next);
+            temp.next = new CellNode(new CellPhone(cp,cp.getSerialNum()), temp.next);
             size++;
         }
     }
@@ -96,6 +114,11 @@ public class CellList {
         CellNode temp = head;
         if (index > this.size-1 || index <0)
             throw new NoSuchElementException();
+        if (index == 0) {
+            head = head.next;
+            size--;
+            return;
+        }
         while (ctr+1!=index){
             temp = temp.next;
             ctr++;
@@ -111,23 +134,29 @@ public class CellList {
         }
     }
 
-    public void replaceAtIndex(CellPhone cp, int index){
-        if (index > this.size-1 || index < 0)
+    public void replaceAtIndex(CellPhone cp, int index) {
+        if (index > this.size - 1 || index < 0)
             return;
+        if (index == 0){
+            head = new CellNode(new CellPhone(cp,cp.getSerialNum()), head.next);
+            return;
+        }
         CellNode temp = head;
         int ctr = 0;
         while (ctr+1!=index){
             temp = temp.next;
             ctr++;
         }
-        temp.next = new CellNode((CellPhone) cp.clone(),temp.next.next);
+        temp.next = new CellNode(new CellPhone(cp,cp.getSerialNum()),temp.next.next);
     }
 
+    // This method may result in a privacy leak
     public CellNode find(long sn){
-        int ctr = 0;
         CellNode temp = head;
+        ctr = 0;
         while (temp!=null && temp.cp.getSerialNum()!=sn){
             temp = temp.next;
+            ctr++;
         }
         return temp;
     }
@@ -146,7 +175,7 @@ public class CellList {
         CellNode temp = head;
         int ctr = 1;
         System.out.println();
-        String s = "The current size of the list is "+this.size+". Here are the contents of the list\n" +
+        String s = "The current size of the list is "+this.size+". Here are the contents of the list.\n" +
                 "=====================================================================\n";
         while (temp!=null){
             s += temp.cp.toString()+" ---> ";
@@ -154,25 +183,24 @@ public class CellList {
             if (ctr%3==0)
                 s+="\n";
             ctr++;
-
         }
         s +="X";
         System.out.println(s);
         System.out.println();
     }
 
-    public boolean equals(CellList o){
-        if (o.size==this.size){
+    public boolean equals(CellList o) {
+        if (o.size == this.size) {
             CellNode temp = head;
-            while (temp !=null){
-                if (!this.equals(o))
+            CellNode temp2 = o.head;
+            while (temp != null) {
+                if (!temp.cp.equals(temp2.cp))
                     return false;
                 temp = temp.next;
+                temp2 = temp2.next;
             }
             return true;
-        }else
+        } else
             return false;
     }
-
-
 }
