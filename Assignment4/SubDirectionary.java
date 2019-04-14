@@ -21,8 +21,8 @@ public class SubDirectionary {
         System.out.print("\nWelcome to the Sub-Dictionary Generator!\n" +
                 "Please enter the name of the input file: ");
         try{
-            FileInputStream fis = new FileInputStream(keyIn.next());
-//            FileInputStream fis = new FileInputStream("PersonOfTheCentury.txt");
+//            FileInputStream fis = new FileInputStream(keyIn.next());
+            FileInputStream fis = new FileInputStream("PersonOfTheCentury.txt");
             Scanner sc = new Scanner(fis);
 
             while(sc.hasNext()){
@@ -37,7 +37,6 @@ public class SubDirectionary {
                 if(s.matches(".*\\d+.*")||s.equals("=")||(s.length()==1 && !(s.equals("A") || s.equals("I")))){
                     s = "";
                 }
-
                 if(!dict.contains(s) && !s.equals("")){
                     dict.add(s);
                 }

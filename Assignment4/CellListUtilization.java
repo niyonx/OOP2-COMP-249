@@ -58,14 +58,20 @@ public class CellListUtilization {
         choice = keyIn.nextInt();
         while (choice !=0){
             if (choice ==1) {
-                System.out.print("Please enter a few serial numbers (with a space in between) to search them through the list: ");
-                serialNo = keyIn.nextLong();
-                CellList.CellNode that;
-                that = list1.find(serialNo);
-                if (that != null)
-                    System.out.println(that.getCp() + " found with " + list1.getCtr() + " iterations.");
-                else
-                    System.out.println("CellPhone with serial number " + serialNo + " not found.");
+                System.out.print("Please enter a serial number (with a space in between and -1 to end) to search them through the list: ");
+//                System.out.print("Please enter a serial number to search it through the list: ");
+                while(keyIn.hasNextLong()){
+                        serialNo = keyIn.nextLong();
+                        if(serialNo == -1){
+                            break;
+                        }
+                        CellList.CellNode that;
+                        that = list1.find(serialNo);
+                        if (that != null)
+                            System.out.println(that.getCp() + " found with " + list1.getCtr() + " iterations.");
+                        else
+                            System.out.println("CellPhone with serial number " + serialNo + " not found.");
+                }
             }else if (choice ==2){
                 System.out.print("Please enter the index you want a cell phone to be added: ");
                 int index;

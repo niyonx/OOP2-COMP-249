@@ -150,7 +150,8 @@ public class CellList {
         temp.next = new CellNode(new CellPhone(cp,cp.getSerialNum()),temp.next.next);
     }
 
-    // This method may result in a privacy leak
+    // This method may result in a privacy leak as it returns a pointer to a specific location in the linked list
+    // To avoid privacy leak, make the node class a private inner class in the linked list class
     public CellNode find(long sn){
         CellNode temp = head;
         ctr = 0;
